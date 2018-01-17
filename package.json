@@ -1,0 +1,22 @@
+{
+  "name": "topichat",
+  "version": "1.0.0",
+  "description": "Chat between similiar interests by tags or web page on",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamfetters/TopiChat.git"
+  },
+  "author": "Adam Fetters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamfetters/TopiChat/issues"
+  },
+  "homepage": "https://github.com/adamfetters/TopiChat#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
