@@ -5,18 +5,22 @@ const cors = require('cors');
 
 const server = express();
 
-const port = process.env.PORT || 5000;
-
 const routes = require('../api/routes/routes');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/topichat', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/topichat', (err, db) => {
+  if (err) {
+    console.log('Unable to connect to database. Please restart the server. Error:', err);
+  } else {
+    console.log('Database connected');
+  }
+});
 
 server.use(bodyparser.json());
 server.use(cors());
 
 routes(server);
 
-server.listen(port, () => {
-  console.log(`Server listeing on port:${port}`);
-});
+module.exports = {
+  server,
+};

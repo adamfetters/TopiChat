@@ -1,4 +1,4 @@
-const User = require('../models/Users/UserSchema');
+const User = require('../models/users');
 const bcrypt = require('bcrypt');
 
 const STATUS_USER_ERROR = 422;
@@ -15,6 +15,7 @@ const sendUserError = (err, res) => {
 
 /* ************Middelwares *************** */
 const hashedPassword = (req, res, next) => {
+  console.log('Hashing Password');
   const { password } = req.body;
   if (!password) {
     sendUserError('Must have a password', res);
