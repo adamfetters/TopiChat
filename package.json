@@ -4,7 +4,8 @@
   "description": "Chat between similiar interests by tags or web page on",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon  server.js"
+    "server": "nodemon  Server/server.js",
+    "start" : "concurrently 'npm run react' 'npm run server'"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,11 @@
   "dependencies": {
     "express": "^4.16.2",
     "npm": "^5.6.0",
-    "update": "^0.7.4"
+    "socket.io": "^2.0.4",
+    "update": "^0.7.4",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
   }
 }
