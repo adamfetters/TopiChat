@@ -2,6 +2,7 @@ const User = require('../models/users');
 const { hashedPassword, sendUserError } = require('../middlewares/middlewares');
 
 const createUser = (hashedPassword, (req, res) => {
+  console.log(req.password);
   const { username } = req.body;
   const passwordHash = req.password;
   const newUser = new User({ username, passwordHash });

@@ -23,6 +23,8 @@ const hashedPassword = (req, res, next) => {
   bcrypt
     .hash(password, BCRYPT_COST)
     .then((pw) => {
+      console.log(pw);
+
       req.password = pw;
       next();
     })
