@@ -1,0 +1,12 @@
+.container {
+  margin-top: 25%;
+  text-align: center;
+}
+
+body {
+  background-color: lightblue;
+}
+
+.chat-box {
+  width: 400px;
+}

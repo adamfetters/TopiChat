@@ -1,9 +1,11 @@
 const express = require('express');
+const app = express();
+const server = require('http').createServer(app);
 
-const server = express();
+users = [];
+connections = [];
 
 const port = process.env.PORT || 4000;
+console.log(`Server running on port ${port}`);
 
-server.listen(port, () => {
-    console.log(`Listening to requests on port ${port}`);
-})
+server.listen(port);
