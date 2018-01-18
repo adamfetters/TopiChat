@@ -15,7 +15,6 @@ const sendUserError = (err, res) => {
 
 /* ************Middelwares *************** */
 const hashedPassword = (req, res, next) => {
-  console.log('Hashing Password');
   const { password } = req.body;
   if (!password) {
     sendUserError('Must have a password', res);

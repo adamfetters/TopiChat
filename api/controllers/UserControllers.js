@@ -4,12 +4,10 @@ const { sendUserError } = require('../middlewares/middlewares');
 const createUser = ((req, res) => {
   const { email } = req.body;
   const passwordHash = req.password;
-  console.log(email);
-
   const newUser = new User({ email, passwordHash });
   newUser.save((err, savedUser) => {
     if (err) {
-      sendUserError('Need both email/Password field', res);
+      if (err.code === 11000) sendUserError('Email already exists', res);
     } else {
       res.json(savedUser);
     }
