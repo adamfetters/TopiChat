@@ -1,14 +1,15 @@
 const User = require('../models/users');
-const { hashedPassword, sendUserError } = require('../middlewares/middlewares');
+const { sendUserError } = require('../middlewares/middlewares');
 
-const createUser = (hashedPassword, (req, res) => {
-  console.log(req.password);
-  const { username } = req.body;
+const createUser = ((req, res) => {
+  const { email } = req.body;
   const passwordHash = req.password;
-  const newUser = new User({ username, passwordHash });
+  console.log(email);
+
+  const newUser = new User({ email, passwordHash });
   newUser.save((err, savedUser) => {
     if (err) {
-      sendUserError('Need both username/Password field', res);
+      sendUserError('Need both email/Password field', res);
     } else {
       res.json(savedUser);
     }
