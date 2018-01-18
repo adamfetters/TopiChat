@@ -1,12 +1,22 @@
-const app = require('http').createServer();
-const io = module.exports.io = require('socket.io')(app);
+const express = require('express');
+const bodyparser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
+const server = express();
 
 const port = process.env.PORT || 5000;
 
-const SocketManager = require('./SocketManager');
+const routes = require('../api/routes/routes');
 
-io.on('connection', SocketManager);
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/topichat', { useMongoClient: true });
 
-app.listen(port, () => {
-    console.log(`Connected on port ${port}`);
-})
+server.use(bodyparser.json());
+server.use(cors());
+
+routes(server);
+
+server.listen(port, () => {
+  console.log(`Server listeing on port:${port}`);
+});
